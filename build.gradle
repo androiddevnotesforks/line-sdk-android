@@ -11,8 +11,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:${ver.buildTools.android_gradle}"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${ver.kotlin}"
-        classpath "org.jetbrains.kotlin:kotlin-android-extensions:${ver.kotlin}"
-        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.22.0"
+        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.30.0"
     }
 }
 
