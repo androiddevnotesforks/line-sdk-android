@@ -30,8 +30,6 @@ class OpenChatInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = OpenChatInfoFragmentBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = this
-
         return binding.root
     }
 
@@ -44,7 +42,6 @@ class OpenChatInfoFragment : Fragment() {
 
     private fun setupViewModel() {
         viewModel = ViewModelProvider(requireActivity()).get(OpenChatInfoViewModel::class.java)
-        binding.viewModel = viewModel
 
         viewModel.chatroomName.observe(this, Observer { name ->
             binding.nameMaxTextView.text =
@@ -60,6 +57,10 @@ class OpenChatInfoFragment : Fragment() {
             category?.resourceId?.let { resourceId ->
                 binding.categoryLabelTextView.text = resources.getString(resourceId)
             }
+        })
+
+        viewModel.isSearchIncluded.observe(this, Observer { isSearchIncluded ->
+            binding.searchIncludedCheckBox.isChecked = isSearchIncluded
         })
     }
 

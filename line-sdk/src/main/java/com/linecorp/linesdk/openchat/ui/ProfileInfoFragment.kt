@@ -30,8 +30,6 @@ class ProfileInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = ProfileInfoFragmentBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = this
-
         return binding.root
     }
 
@@ -39,7 +37,9 @@ class ProfileInfoFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         viewModel = ViewModelProvider(requireActivity()).get(OpenChatInfoViewModel::class.java)
-        binding.viewModel = viewModel
+        viewModel.profileName.observe(this,
+            Observer { name -> binding.displayNameEditText.setText(name)}
+        )
 
         setupViews()
     }
